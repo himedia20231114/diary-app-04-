@@ -62,7 +62,7 @@ function reducer ( state, action) {
     case "INIT": 
       return action.data; 
     case "CREATE":
-      return [ation.data, ...state]; 
+      return [action.data, ...state]; 
 
   }
 }
