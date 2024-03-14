@@ -2,8 +2,14 @@ import React from 'react';
 import './DiaryList.css'; 
 import Button from './Button';
 import DiaryItem from './DiaryItem';
+import { useNavigate } from 'react-router-dom';
 
 function DiaryList({data}) {
+
+    // useNavigate : 함수, 이벤트 특정 요청 ==> 라우터 요청에대한 컴포넌트 출력 
+    const navigate = useNavigate();
+
+
     return (
         <div className="DiaryList">
             {/* select box, 새글쓰기 버튼  */}
@@ -15,7 +21,7 @@ function DiaryList({data}) {
                     </select>
                 </div>
                 <div className="right_col">
-                    <Button text={"새 글쓰기"} type= {"positive"} onClick = {() => {console.log("새 글쓰기 클릭됨!!!")}}  />
+                    <Button text={"새 글쓰기"} type= {"positive"} onClick = {() => {navigate('/new')}}  />
                 </div>
             </div>
 

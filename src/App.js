@@ -86,7 +86,7 @@ function App() {
   ); 
 
   // 하위 컴포넌트에서 요청하는 이벤트 처리 : onCreate, onUpdate, onDelete 
-  const onCreate = () => {
+  const onCreate = (date, content, emotionId) => {
 
   }
   const onUpdate = () => {

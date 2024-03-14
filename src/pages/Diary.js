@@ -41,8 +41,6 @@ function Diary(props) {
             //matchDiary 의 값이 존재 할때 작동 , setDiary를 사용해서 diary 에 값을 주입 
             setDiary(matchDiary); 
          }
-
-
     }
         , [id, data]
     ); 
@@ -56,7 +54,7 @@ function Diary(props) {
         //diary의 값이 주입된 상태 
 
   const { content, emotionId, date} = diary ; 
-  
+
     return (
         <div>
             <Header title = { ` ${id} 글의 상세내용  `}
