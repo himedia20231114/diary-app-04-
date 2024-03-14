@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from '../components/Button';
 import Header from '../components/Header';
 import DiaryList from '../components/DiaryList';
@@ -10,14 +10,27 @@ function Home(props) {
     //  data <== mockData       [ {}, {} , {}]
     const data = useContext(DiaryStateContext); 
 
+    //현재 년월을 출력하는 useState 
+    const [pivotDate, setPivotDate] = useState( new Date()); 
+
+    const headerTitle = `${pivotDate.getFullYear()} 년 ${pivotDate.getMonth() + 1 }월` 
+
+    const onDecreaseMonth = () => {
+        setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() - 1 ) ); 
+    }
+    const onIncreseMonth = () => {
+        setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() + 1 ) ); 
+    }
 
 
     return (
         <div>
             <Header 
-                title = "2024년 3월"
-                leftChild={<Button text={" < "} type="positive" onClick={ ()=> {console.log("왼쪽 버튼 클릭!!")}} />}
-                rightChild={<Button text={" > "} type="negative" onClick={ ()=> {console.log("오른쪽 버튼 클릭!!")}}/>}
+                title = {headerTitle} 
+                leftChild={<Button text={" < "} type="positive" 
+                    onClick={ onDecreaseMonth } />}
+                rightChild={<Button text={" > "} type="negative" 
+                    onClick={ onIncreseMonth }/>}
             />
             <DiaryList data={data} />
 
