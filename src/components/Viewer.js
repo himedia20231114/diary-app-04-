@@ -15,7 +15,7 @@ const emotionItem = emotionList.find(
             {/* 이미지를 적용 */}
             <section>
                 <h4> 오늘의 감정</h4>
-                <div> 
+                <div className = {["emotion_img_wrapper", `emotion_img_wrapper_${emotionId}`].join(" ")}> 
                     <img alt={emotionItem.name} src={emotionItem.img} /> 
                     <div className="emotion_descript"> {emotionItem.name}</div>
                 </div>

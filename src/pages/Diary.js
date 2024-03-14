@@ -47,14 +47,16 @@ function Diary(props) {
         , [id, data]
     ); 
 
-    const navigate = useNavigate(); 
-
- //   const { content, emotionId, date} = diary ; 
-
-    if (!diary) {
-        return <div> 데이터가 로드 중입니다. </div>
+    const navigate = useNavigate();
+    
+    // 주의 : diary의 값이 주입 되고 이후에 작동  
+    if ( !diary) {
+        return <div> 현재 값이 로딩중 입니다. </div>
     }else {
-        const { content, emotionId, date} = diary ; 
+        //diary의 값이 주입된 상태 
+
+  const { content, emotionId, date} = diary ; 
+  
     return (
         <div>
             <Header title = { ` ${id} 글의 상세내용  `}
@@ -69,4 +71,5 @@ function Diary(props) {
     );
 }
 }
+
 export default Diary;

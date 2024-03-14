@@ -28,7 +28,7 @@ function DiaryItem({id , emotionId, content, date}) {
 
     return (
         <div className="DiaryItem">
-            <div className={  ['img_section' , `img_section_${emotionId}`].join(" ")  }>
+            <div onClick={onDetail} className={  ['img_section' , `img_section_${emotionId}`].join(" ")  }>
                 <img src = {getEmotionImgById(emotionId)}  alt= {`emotion${emotionId}`} />
             </div>
             <div onClick={onDetail} className="info_section">
