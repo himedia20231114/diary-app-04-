@@ -49,9 +49,12 @@ function Diary(props) {
 
     const navigate = useNavigate(); 
 
-//     const { content, emotionId, date} = diary ; 
+ //   const { content, emotionId, date} = diary ; 
 
-
+    if (!diary) {
+        return <div> 데이터가 로드 중입니다. </div>
+    }else {
+        const { content, emotionId, date} = diary ; 
     return (
         <div>
             <Header title = { ` ${id} 글의 상세내용  `}
@@ -65,5 +68,5 @@ function Diary(props) {
         </div>
     );
 }
-
+}
 export default Diary;
