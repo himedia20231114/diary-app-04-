@@ -71,7 +71,7 @@ export const emotionList = [
 export const getFormattedDate = (trgetDate) => {
     //년도만 추출 (yyyy)
     let year = trgetDate.getFullYear(); 
-    //월만 추출 : 3 => 03  ,  (2 + 1 ) :  0월 =>  +1 
+    //월만 추출 : 3 => 03  ,  3월 (2 + 1 ) :  0월 =>  +1 
     let month = trgetDate.getMonth() + 1 ; 
     //일만 추출 
     let day = trgetDate.getDate(); 

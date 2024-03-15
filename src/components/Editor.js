@@ -26,15 +26,23 @@ function Editor({initData, onSubmit}) {
     // 취소하기 버튼에서 사용 하는 useNavigate 
     const navigate = useNavigate(); 
 
-    const handleChangeEmotion = () => {
-        console.log('이벤트 전송 잘됨 (Editor : handleChangeEmotion 함수')
+    // 선택한 이모션의 번호를 받아서 state 의 emotionId 필드의 값을 수정 
+    // key <=  e 
+    const handleChangeEmotion = (e) => {
+       setState({
+            ...state, emotionId:e
+       }); 
     }
     // textarea 의 값이 변경 되면 작동 되는 함수 
-    const handleChangeContent = () => {
-
+    const handleChangeContent = (e) => {
+        setState({
+            ...state, content: e.target.value
+        }); 
     }
-    const handleSubmit = () => {
 
+    // 기존의 state 의 값을 호출 하는 컴포넌트로 전송 
+    const handleSubmit = () => {
+        onSubmit(state); 
     }
 
 
@@ -56,7 +64,7 @@ function Editor({initData, onSubmit}) {
                    emotionList.map( (it) => (
                         <EmotionItem key={it.id} {...it} 
                             onClick={handleChangeEmotion}  
-                            isSelected={true}
+                            isSelected={state.emotionId === it.id}
                             />
                    ) )} 
                 </div>
@@ -68,7 +76,7 @@ function Editor({initData, onSubmit}) {
                 <div className="input_wrapper"> 
                     <textarea 
                         placeholder='오늘은 어땟나요'
-                        value = {"state로 처리 [수정할 내용]"}
+                        value = {state.content}
                         onChange = {handleChangeContent}
                         /> 
                 </div>
