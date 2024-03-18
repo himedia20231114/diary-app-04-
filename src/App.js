@@ -63,6 +63,11 @@ function reducer ( state, action) {
       return action.data; 
     case "CREATE":
       return [action.data, ...state]; 
+    case "DELETE":
+      // state.filter(it) 을 돌려서 ation.targetId !== it.id 을 새로운 배열에 담아서 리턴
+      // id.id 필드의 자료형(Number), action.targetId 필의 자료형 (String)  
+      return state.filter( (it) => String( it.id ) !== String (action.targetId )
+      );
 
   }
 }
@@ -106,7 +111,13 @@ function App() {
   const onUpdate = () => {
 
   }
-  const onDelete = () => {
+  const onDelete = (targetId) => {
+     // console.log(`하위에서 삭제 id : ${targetId}`)
+    dispatch({
+      type:'DELETE',
+ //     targetId: targetId,     <== 풀어서 사용함. 
+      targetId,                 // 축약 표현 
+    } ); 
 
   }
 
