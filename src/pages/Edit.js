@@ -63,8 +63,22 @@ function Edit(props) {
          }
     }
 
-    const onSubmit = () => {
-        // 수정한 내용을 처리하는 함수 
+    const onSubmit = (data) => {
+        // 수정한 내용을 처리하는 함수
+        if (
+             window.confirm (`일기를 정말로 수정 할까요? :  ${data.date}` )
+        ){
+            // confirm 에서 확인을 클릭시 작동 
+            // 구조 분해 할당 , ES6  : 객체의 필드를 변수에 할당. 
+            const {date, emotionId, content} = data ;  
+            //onUpdte 이벤트에 구조분해 할당한 값을 props로 전달 
+            // 수정 페이지 이므로 /edit/:id , id 값도 넘겨 줘야 함. 
+            onUpdate( id, date, emotionId, content); 
+            //페이지 이동 
+            navigate('/', {replace:true}); 
+
+        }
+        
     }
 
     return (

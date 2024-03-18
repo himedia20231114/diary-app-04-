@@ -68,11 +68,11 @@ function reducer ( state, action) {
       // id.id 필드의 자료형(Number), action.targetId 필의 자료형 (String)  
       return state.filter( (it) => String( it.id ) !== String (action.targetId )
       );
-
+    case "UPDATE": 
+      return state.map( (it)=> String(it.id) === String(action.data.id) ? 
+                      {...action.data}: it ) ; 
   }
 }
-
-
 function App() {
 
   //상태를 처리하는 변수 
@@ -108,7 +108,21 @@ function App() {
         }
     }); 
   }
-  const onUpdate = () => {
+
+
+  const onUpdate = (id, date, emotionId, content) => {
+    console.log (`App 업데이트 날짜 : ${date}`)
+    console.log (`포멧 완료된 날짜 : ${new Date(date).getTime()}`)
+
+    dispatch({
+      type: "UPDATE", 
+      data: {
+        id : id, 
+        date : new Date(date).getTime(),    // yyyy-mm-dd 형식을 TimesTemp 형식으로 변환 
+        emotionId : emotionId, 
+        content : content,
+      }
+    }); 
 
   }
   const onDelete = (targetId) => {

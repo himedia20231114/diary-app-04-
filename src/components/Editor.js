@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Editor.css'; 
 import {emotionList , getFormattedDate} from '../utils'; 
 import EmotionItem from './EmotionItem';
@@ -8,12 +8,27 @@ import { useNavigate } from 'react-router-dom';
 
 function Editor({initData, onSubmit}) {
 
+    //initData    <== 생성 : x, 수정 : 0 
+
     //글 쓴 전체 내용을 담는 state  <== String, Number, Boolean, Object:객체, 배열 
     const [state, setState] = useState({
         date : getFormattedDate(new Date()), 
         emotionId : 3, 
         content : "", 
     }); 
+
+    // 수정 페이지 : initDate : 수정할 객체가 props를 통해서 넘오옴. 
+    // Editor 컴포넌트가 호출 , initData 가 상태가 변경될 때 함수가 작동 
+    useEffect(
+        () => {
+            if (initData){  //initData : 값이 존재할때 , 수정 페이지 
+                            // initData 객체의 date 필드의 형식을 : yyyy-mm-dd 
+                setState({...initData, date:getFormattedDate(new Date (parseInt(initData.date)))});
+            }
+
+        }, [initData]
+    );
+
 
     // 선택된 날짜 수정 하기 
     const handleChangeDate = (e) => {
