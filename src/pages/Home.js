@@ -23,7 +23,7 @@ function Home(props) {
     useEffect(
         () => {
            if (data.length >= 1 ) {        
-            // 현재 년월에 대한 사작일, 종료일을 가지고 옮
+            // 현재 년월에 대한 시작일, 종료일을 가지고 옮
             const { beginTimeStemp, endTimeStemp} = getMonthRangeByDate(pivotDate); 
 
             // data : 전체 읽기에 대한 내용 ===> 해당월의 일기 내용만 필더 해서 새로운 배열에 저장 
